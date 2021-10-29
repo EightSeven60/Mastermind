@@ -12,6 +12,8 @@ public class AppFrame extends JFrame {
 
     protected GraphicsDevice graphicsDevice;
 
+    protected JLabel gamePanelBackground;
+
     protected JButton exitButton;
     protected JButton saveButton;
     protected JButton loadButton;
@@ -52,8 +54,6 @@ public class AppFrame extends JFrame {
     protected JPanel mainPanel;
     protected JPanel menuPanel;
     protected JPanel gamePanel;
-    protected JPanel ballSelectorPanel;
-    protected JPanel nullSouthPanel;
 
     public AppFrame() {
 
@@ -90,15 +90,17 @@ public class AppFrame extends JFrame {
         menuPanel.add(saveButton);
         menuPanel.add(loadButton);
 
-        ballSelectorPanel = new JPanel();
-        ballSelectorPanel.setOpaque(true);
-        ballSelectorPanel.setBackground(new Color(0, 0, 100));
-        ballSelectorPanel.setPreferredSize(new Dimension(300, 0));
+        ImageIcon background = new ImageIcon("Resources//GUI background.png");
+        background.setImage(background.getImage().getScaledInstance(1536, 824,0));
 
-        gamePanel = new JPanel(new BorderLayout());
+        gamePanelBackground = new JLabel(background);
+        gamePanelBackground.setLocation(0, 0);
+        gamePanelBackground.setSize(1536, 824);
+
+        gamePanel = new JPanel(null);
         gamePanel.setOpaque(true);
-        gamePanel.setBackground(new Color(0, 100, 0));
-        gamePanel.add(ballSelectorPanel, BorderLayout.EAST);
+        //gamePanel.setBackground(new Color(25, 25, 25));
+        gamePanel.add(gamePanelBackground);
 
         mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(new Color(0, 0, 50));
@@ -118,5 +120,7 @@ public class AppFrame extends JFrame {
                 "\nthisY: " + this.getY() +
                 "\nthisWidth: " + this.getWidth() +
                 "\nthisHeight: " + this.getHeight());
+        System.out.println("gamePanel height: " + gamePanel.getHeight() +
+                "\n gamePanel width: " + gamePanel.getWidth());
     }
 }

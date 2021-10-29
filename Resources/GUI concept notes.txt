@@ -1,0 +1,7 @@
+//MAY NOT BE ACCURATE IN-APP DUE TO SWING BEING A TOTAL ASSHOLE
+
+workspace - border: 1828 x 938 px
+padding NS: 10 px
+padding EW: 8 px
+ball width: 151 px
+ball height: 153 px
