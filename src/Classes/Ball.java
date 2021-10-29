@@ -7,6 +7,8 @@ public class Ball {
     protected static final int COLOR_YELLOW = 3;
     protected static final int COLOR_TURQUOISE = 4;
     protected static final int COLOR_PURPLE = 5;
+    protected static final int COLOR_WHITE = 6;
+    protected static final int COLOR_BLACK = 7;
     private int _color;
     public Ball()
     {
@@ -27,7 +29,7 @@ public class Ball {
     @Override
     public String toString()
     {
-        return "Ball Color: " + checkColor();
+        return "Ball Color: " + checkColor() + "\n";
        // return "Ball Color: " + _color;
     }
     public String checkColor()
@@ -57,7 +59,28 @@ public class Ball {
         {
             st = "purple";
         }
+        else if(_color==COLOR_WHITE)
+        {
+            st = "white";
+        }
+        else if(_color==COLOR_BLACK)
+        {
+            st = "black";
+        }
         return st;
     }
+    @Override
+    public boolean equals(Object o)
+    {
+        if(o==this)
+        {
+            return true;
+        }
+        if(!(o instanceof Ball))
+        {
+            return false;
+        }
+        Ball b = (Ball) o;
+        return _color == b._color;
+    }
 }
-
