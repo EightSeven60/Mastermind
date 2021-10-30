@@ -37,7 +37,7 @@ public class Row {
         for(int i=0;i<4;++i)
         {
             Random rd = new Random();
-            int c = rd.nextInt(7);
+            int c = rd.nextInt(6);
             if(c==0)
             {
                 _row[i] = new Ball(Ball.COLOR_RED);
