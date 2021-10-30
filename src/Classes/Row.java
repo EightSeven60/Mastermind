@@ -104,6 +104,15 @@ public class Row extends Instantiate{
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "Row{" +
+                "_row=" + Arrays.toString(_row) +
+                ", _hints=" + Arrays.toString(_hints) +
+                '}';
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
