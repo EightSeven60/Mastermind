@@ -1,16 +1,25 @@
-package Classes;
+package classes;
 
 import java.util.Scanner;
 
 public class GameBoard {
+    private static GameBoard _instance;
     private Row[] _rows_of_balls;
-    public GameBoard()
+    private GameBoard()
     {
 
     }
-    public GameBoard(Row[] rows_of_balls )
+    private GameBoard(Row[] rows_of_balls )
     {
          _rows_of_balls=rows_of_balls;
+    }
+    public static GameBoard getInstance()
+    {
+        if(_instance==null)
+        {
+            _instance = new GameBoard();
+        }
+        return _instance;
     }
     public void set_rows_of_balls()
     {
