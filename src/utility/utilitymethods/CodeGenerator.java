@@ -1,8 +1,7 @@
-package utilitymethods;
+package utility.utilitymethods;
 
 import java.util.*;
 public class CodeGenerator {
-
 
 
     private int _wCode1 = 0;
