@@ -4,7 +4,7 @@ import java.util.*;
 public class CodeGenerator {
 
 
-
+    //_wCodex stands for the colour of position X
     private int _wCode1 = 0;
     private int _wCode2 = 0;
     private int _wCode3 = 0;
