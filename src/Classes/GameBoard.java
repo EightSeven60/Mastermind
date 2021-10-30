@@ -43,6 +43,13 @@ public class GameBoard {
     }
 
     @Override
+    public String toString() {
+        return "GameBoard{" +
+                "_rows_of_balls=" + Arrays.toString(_rows_of_balls) +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
