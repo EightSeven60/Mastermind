@@ -1,5 +1,6 @@
 package Classes;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Row {
@@ -35,8 +36,8 @@ public class Row {
         System.out.println("---ROW---");
         for(int i=0;i<4;++i)
         {
-            System.out.println("Type the color of the ball: ");
-            int c = sc.nextInt();
+            Random rd = new Random();
+            int c = rd.nextInt(7);
             if(c==0)
             {
                 _row[i] = new Ball(Ball.COLOR_RED);
@@ -79,14 +80,13 @@ public class Row {
         {
             for(int j=0;j<2;++j)
             {
-
-                System.out.println("Type the color of the ball: ");
-                String s = sc.next();
-                if(s.equals("white"))
+                Random r = new Random();
+                int s = r.nextInt(2)+6;
+                if(s==6)
                 {
                     _hints[i][j] = new Ball(Ball.COLOR_WHITE);
                 }
-                else if(s.equals("black"))
+                else if(s==7)
                 {
                     _hints[i][j] = new Ball(Ball.COLOR_BLACK);
                 }
