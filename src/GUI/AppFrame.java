@@ -18,7 +18,7 @@ public class AppFrame extends JFrame {
     protected JButton saveButton;
     protected JButton loadButton;
 
-    protected Timer timer;
+    protected Timer exitTimer;
 
     protected class ExitListener implements ActionListener {
         @Override
@@ -28,12 +28,12 @@ public class AppFrame extends JFrame {
                     System.exit(0);
                 } else {
                     exitButton.setText("Are you sure?");
-                    timer.start();
+                    exitTimer.start();
                 }
             }
             else {
                 exitButton.setText("EXIT");
-                timer.stop();
+                exitTimer.stop();
             }
 
         }
@@ -41,18 +41,24 @@ public class AppFrame extends JFrame {
     protected class SaveListener implements  ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            //ask for confirmation
             //save game state to file
         }
     }
     protected class LoadListener implements  ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            //ask for confirmation
             //load game state from file
         }
     }
 
     protected JPanel mainPanel;
     protected JPanel menuPanel;
+
+    protected JPanel guessMatrixPanel;
+    protected JPanel hintPanel;
+    protected JPanel targetGuessPanel;
     protected JPanel gamePanel;
 
     public AppFrame() {
@@ -65,7 +71,7 @@ public class AppFrame extends JFrame {
         SaveListener saveListener = new SaveListener();
         LoadListener loadListener = new LoadListener();
 
-        timer = new Timer(2000, exitListener);
+        exitTimer = new Timer(2000, exitListener);
 
         this.setLayout(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -90,16 +96,37 @@ public class AppFrame extends JFrame {
         menuPanel.add(saveButton);
         menuPanel.add(loadButton);
 
-        ImageIcon background = new ImageIcon("Resources//GUI background.png");
-        background.setImage(background.getImage().getScaledInstance(1536, 824,0));
+        ImageIcon background = new ImageIcon("Resources//GUI background marked.png");
+        background.setImage(background.getImage().getScaledInstance(1920, 1040,0));
 
         gamePanelBackground = new JLabel(background);
         gamePanelBackground.setLocation(0, 0);
-        gamePanelBackground.setSize(1536, 824);
+        gamePanelBackground.setSize(1920, 1040);
+
+        hintPanel = new JPanel(new GridLayout(1, 10));
+        hintPanel.setLocation(356, 211);
+        hintPanel.setSize(1510, 156);
+        //hintPanel.setBackground(new Color(70, 0, 0));
+        hintPanel.setOpaque(false);
+
+        targetGuessPanel = new JPanel(new GridLayout(4, 1));
+        targetGuessPanel.setLocation(54, 366);
+        targetGuessPanel.setSize(151, 617);
+        //targetGuessPanel.setBackground(new Color(70, 0, 0));
+        targetGuessPanel.setOpaque(false);
+
+        guessMatrixPanel = new JPanel(new GridLayout(10, 4));
+        guessMatrixPanel.setLocation(356, 366);
+        guessMatrixPanel.setSize(1510, 617);
+        //guessMatrixPanel.setBackground(new Color(70, 0, 0));
+        guessMatrixPanel.setOpaque(false);
 
         gamePanel = new JPanel(null);
         gamePanel.setOpaque(true);
-        //gamePanel.setBackground(new Color(25, 25, 25));
+        gamePanel.setBackground(new Color(25, 25, 25));
+        gamePanel.add(hintPanel);
+        gamePanel.add(targetGuessPanel);
+        gamePanel.add(guessMatrixPanel);
         gamePanel.add(gamePanelBackground);
 
         mainPanel = new JPanel(new BorderLayout());
