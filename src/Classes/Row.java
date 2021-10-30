@@ -1,9 +1,10 @@
 package Classes;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Row {
+public class Row extends Instantiate{
     private Ball[] _row;
     private Ball[][] _hints;
     public Row()
@@ -33,7 +34,6 @@ public class Row {
     }
     public void instantiate_row(Scanner sc)
     {
-        System.out.println("---ROW---");
         for(int i=0;i<4;++i)
         {
             Random rd = new Random();
@@ -75,7 +75,6 @@ public class Row {
     }
     public void instantiate_hints(Scanner sc)
     {
-        System.out.println("---HINTS---");
         for(int i=0;i<2;++i)
         {
             for(int j=0;j<2;++j)
@@ -104,5 +103,12 @@ public class Row {
                 System.out.println(_hints[i][j].toString());
             }
         }
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Row row = (Row) o;
+        return Arrays.equals(_row, row._row) && Arrays.equals(_hints, row._hints);
     }
 }
