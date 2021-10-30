@@ -1,4 +1,4 @@
-package utility.utilitymethods;
+package utility;
 
 import java.util.*;
 public class CodeGenerator {
