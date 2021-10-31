@@ -15,6 +15,8 @@ public class AppFrame extends JFrame {
     protected int screenWidth;
     protected int screenHeight;
 
+    protected int currentRow; //a row is VERTICAL in the GUI
+
     protected GraphicsDevice graphicsDevice;
 
     protected JLabel gamePanelBackground;
@@ -35,6 +37,7 @@ public class AppFrame extends JFrame {
     protected JPanel hintPanel;
 
     protected JLabelBall[] targetBalls;
+    protected JLabel targetCover;
     protected JPanel targetGuessPanel;
     protected JPanel gamePanel;
 
@@ -43,6 +46,8 @@ public class AppFrame extends JFrame {
         graphicsDevice = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         screenWidth = graphicsDevice.getDisplayMode().getWidth();
         screenHeight = graphicsDevice.getDisplayMode().getHeight();
+
+        currentRow = 0;
 
         this.setLayout(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -61,7 +66,7 @@ public class AppFrame extends JFrame {
         menuPanel.add(saveButton);
         menuPanel.add(exitButton);
 
-        ImageIcon background = new ImageIcon("Resources//GUI background marked.png");
+        ImageIcon background = new ImageIcon("Resources//GUI background.png");
         background.setImage(background.getImage().getScaledInstance(1920, 1040,0));
 
         gamePanelBackground = new JLabel(background);
@@ -108,24 +113,33 @@ public class AppFrame extends JFrame {
             targetGuessPanel.add(targetBalls[i]);
         }
 
+        targetCover = new JLabel(new ImageIcon("Resources//target cover.png"));
+        targetCover.setLocation(targetGuessPanel.getX(), targetGuessPanel.getY());
+        targetCover.setSize(targetGuessPanel.getWidth(), targetGuessPanel.getHeight());
+
         guessMatrixPanel = new JPanel(new GridLayout(4, 10));
         guessMatrixPanel.setLocation(361, 366);
         guessMatrixPanel.setSize(1510, 617);
         guessMatrixPanel.setBackground(new Color(100, 0, 0));
         guessMatrixPanel.setOpaque(false);
 
-        guessBalls = new JLabelBall[10][4];
-        for (int i = 0; i < 10; ++i) {
-            for (int j = 0; j < 4; ++j) {
-                guessBalls[i][j] = new JLabelBall(true);
+        guessBalls = new JLabelBall[4][10];
+        for (int i = 0; i < 4; ++i) {
+            for (int j = 0; j < 10; ++j) {
+                guessBalls[i][j] = new JLabelBall(i % 6, true);
+                guessBalls[i][j].setVisible(false);
                 guessMatrixPanel.add(guessBalls[i][j]);
             }
+        }
+        for (int i = 0; i < 4; ++i) {
+            guessBalls[i][currentRow].setVisible(true);
         }
 
         gamePanel = new JPanel(null);
         gamePanel.setOpaque(true);
         gamePanel.setBackground(new Color(25, 25, 25));
         gamePanel.add(hintPanel);
+        gamePanel.add(targetCover);
         gamePanel.add(targetGuessPanel);
         gamePanel.add(guessMatrixPanel);
         gamePanel.add(gamePanelBackground);
