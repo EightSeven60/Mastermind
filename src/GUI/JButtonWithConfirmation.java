@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class JButtonWithConfirmation extends JButton { //DON'T USE THIS; IT DOESN'T WORK
+public class JButtonWithConfirmation extends JButton {
 
     protected String defaultText;
     protected Timer timer;
@@ -24,26 +24,26 @@ public class JButtonWithConfirmation extends JButton { //DON'T USE THIS; IT DOES
 
     protected static class ListenerWithConfirmation implements ActionListener {
         protected JButtonWithConfirmation button;
-        protected Timer timer;
 
         ListenerWithConfirmation(JButtonWithConfirmation button, Timer timer) {
             this.button = button;
-            this.timer = timer;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == button) {
                 if (button.getText().contentEquals("Are you sure?")) {
-                    System.exit(0);
+                    button.customAction.action();
+                    button.setText(button.defaultText);
+                    button.timer.stop();
                 } else {
                     button.setText("Are you sure?");
-                    timer.start();
+                    button.timer.start();
                 }
             }
             else {
                 button.setText(button.defaultText);
-                timer.stop();
+                button.timer.stop();
             }
 
         }

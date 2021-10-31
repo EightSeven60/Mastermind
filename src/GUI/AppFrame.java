@@ -19,51 +19,10 @@ public class AppFrame extends JFrame {
 
     protected JLabel gamePanelBackground;
 
-    protected JButton exitButton;
-    //protected JButtonWithConfirmation exitButton2;
-    protected JButton saveButton;
-    protected JButton loadButton;
-
-    protected Timer exitTimer;
-
-    protected class ExitListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == exitButton) {
-                if (exitButton.getText().contentEquals("Are you sure?")) {
-                    System.exit(0);
-                } else {
-                    exitButton.setText("Are you sure?");
-                    exitTimer.start();
-                }
-            }
-            else {
-                exitButton.setText("EXIT");
-                exitTimer.stop();
-            }
-
-        }
-    }
-    protected class EXLIS implements CustomAction {
-        @Override
-        public void action() {
-            System.exit(0);
-        }
-    }
-    protected class SaveListener implements  ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            //ask for confirmation
-            //save game state to file
-        }
-    }
-    protected class LoadListener implements  ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            //ask for confirmation
-            //load game state from file
-        }
-    }
+    protected JButtonWithConfirmation exitButton;
+    protected JButtonWithConfirmation saveButton;
+    protected JButtonWithConfirmation loadButton;
+    protected JButtonWithConfirmation guessButton;
 
     protected JPanel mainPanel;
     protected JPanel menuPanel;
@@ -85,37 +44,22 @@ public class AppFrame extends JFrame {
         screenWidth = graphicsDevice.getDisplayMode().getWidth();
         screenHeight = graphicsDevice.getDisplayMode().getHeight();
 
-        ExitListener exitListener = new ExitListener();
-        SaveListener saveListener = new SaveListener();
-        LoadListener loadListener = new LoadListener();
-
-        exitTimer = new Timer(2000, exitListener);
-
         this.setLayout(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        exitButton = new JButton("EXIT");
-        exitButton.setFocusable(false);
-        exitButton.addActionListener(exitListener);
-
-        //exitButton2 = new JButtonWithConfirmation("exit2", new EXLIS());
-
-        saveButton = new JButton("SAVE");
-        saveButton.setFocusable(false);
-        saveButton.addActionListener(saveListener);
-
-        loadButton = new JButton("LOAD");
-        loadButton.setFocusable(false);
-        loadButton.addActionListener(loadListener);
+        exitButton = new JButtonWithConfirmation("EXIT", new ExitAction());
+        saveButton = new JButtonWithConfirmation("SAVE", new SaveAction());
+        loadButton = new JButtonWithConfirmation("LOAD", new LoadAction());
+        guessButton = new JButtonWithConfirmation("SUBMIT GUESS", new SubmitGuessAction());
 
         menuPanel = new JPanel(new GridLayout());
         menuPanel.setOpaque(true);
         menuPanel.setBackground(new Color(50, 50, 10));
         menuPanel.setPreferredSize(new Dimension(0, 40));
-        menuPanel.add(exitButton);
-        menuPanel.add(saveButton);
+        menuPanel.add(guessButton);
         menuPanel.add(loadButton);
-        //menuPanel.add(exitButton2);
+        menuPanel.add(saveButton);
+        menuPanel.add(exitButton);
 
         ImageIcon background = new ImageIcon("Resources//GUI background marked.png");
         background.setImage(background.getImage().getScaledInstance(1920, 1040,0));
@@ -194,7 +138,7 @@ public class AppFrame extends JFrame {
 
         this.setContentPane(mainPanel);
         this.setVisible(true);
-        //graphicsDevice.setFullScreenWindow(this);
+        graphicsDevice.setFullScreenWindow(this);
 
         System.out.println("mainPanelWidth: " + mainPanel.getWidth() +
                 "\nmainPanelHeight: " + mainPanel.getHeight());
@@ -206,26 +150,5 @@ public class AppFrame extends JFrame {
                 "\nthisHeight: " + this.getHeight());
         System.out.println("gamePanel height: " + gamePanel.getHeight() +
                 "\n gamePanel width: " + gamePanel.getWidth());
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        AppFrame appFrame = (AppFrame) o;
-        return screenWidth == appFrame.screenWidth &&
-                screenHeight == appFrame.screenHeight &&
-                graphicsDevice.equals(appFrame.graphicsDevice) &&
-                gamePanelBackground.equals(appFrame.gamePanelBackground) &&
-                exitButton.equals(appFrame.exitButton) &&
-                saveButton.equals(appFrame.saveButton) &&
-                loadButton.equals(appFrame.loadButton) &&
-                exitTimer.equals(appFrame.exitTimer) &&
-                mainPanel.equals(appFrame.mainPanel) &&
-                menuPanel.equals(appFrame.menuPanel) &&
-                guessMatrixPanel.equals(appFrame.guessMatrixPanel) &&
-                hintPanel.equals(appFrame.hintPanel) &&
-                targetGuessPanel.equals(appFrame.targetGuessPanel) &&
-                gamePanel.equals(appFrame.gamePanel);
     }
 }
