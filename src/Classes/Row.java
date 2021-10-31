@@ -1,8 +1,10 @@
 package Classes;
 
+import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
-public class Row {
+public class Row extends Instantiate{
     private Ball[] _row;
     private Ball[][] _hints;
     public Row()
@@ -32,11 +34,10 @@ public class Row {
     }
     public void instantiate_row(Scanner sc)
     {
-        System.out.println("---ROW---");
         for(int i=0;i<4;++i)
         {
-            System.out.println("Type the color of the ball: ");
-            int c = sc.nextInt();
+            Random rd = new Random();
+            int c = rd.nextInt(6);
             if(c==0)
             {
                 _row[i] = new Ball(Ball.COLOR_RED);
@@ -74,19 +75,17 @@ public class Row {
     }
     public void instantiate_hints(Scanner sc)
     {
-        System.out.println("---HINTS---");
         for(int i=0;i<2;++i)
         {
             for(int j=0;j<2;++j)
             {
-
-                System.out.println("Type the color of the ball: ");
-                String s = sc.next();
-                if(s.equals("white"))
+                Random r = new Random();
+                int s = r.nextInt(2)+6;
+                if(s==6)
                 {
                     _hints[i][j] = new Ball(Ball.COLOR_WHITE);
                 }
-                else if(s.equals("black"))
+                else if(s==7)
                 {
                     _hints[i][j] = new Ball(Ball.COLOR_BLACK);
                 }
@@ -104,5 +103,21 @@ public class Row {
                 System.out.println(_hints[i][j].toString());
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Row{" +
+                "_row=" + Arrays.toString(_row) +
+                ", _hints=" + Arrays.toString(_hints) +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Row row = (Row) o;
+        return Arrays.equals(_row, row._row) && Arrays.equals(_hints, row._hints);
     }
 }
