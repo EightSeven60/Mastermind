@@ -1,5 +1,6 @@
 package Classes;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class GameBoard {
@@ -39,5 +40,20 @@ public class GameBoard {
              _rows_of_balls[k].instantiate_row(sc);
              _rows_of_balls[k].instantiate_hints(sc);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "GameBoard{" +
+                "_rows_of_balls=" + Arrays.toString(_rows_of_balls) +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GameBoard gameBoard = (GameBoard) o;
+        return Arrays.equals(_rows_of_balls, gameBoard._rows_of_balls);
     }
 }
