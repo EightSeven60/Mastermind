@@ -67,6 +67,7 @@ public class JLabelBall extends JLabel {
 
     public JLabelBall(int colorClassConstant, boolean changeColorOnClick) {
         super();
+        color = colorClassConstant;
         switch (colorClassConstant) {
             case 0 -> this.setIcon(new ImageIcon("Resources//Red ball.png"));
             case 1 -> this.setIcon(new ImageIcon("Resources//Blue ball.png"));
@@ -83,7 +84,7 @@ public class JLabelBall extends JLabel {
     public JLabelBall(boolean changeColorOnClick) {
         super();
         Random random = new Random();
-        switch (random.nextInt(6)) {
+        switch (color = random.nextInt(6)) {
             case 0 -> this.setIcon(new ImageIcon("Resources//Red ball.png"));
             case 1 -> this.setIcon(new ImageIcon("Resources//Blue ball.png"));
             case 2 -> this.setIcon(new ImageIcon("Resources//Green ball.png"));
@@ -95,5 +96,10 @@ public class JLabelBall extends JLabel {
         if (changeColorOnClick) {
             this.addMouseListener(new ClickListener());
         }
+    }
+    //Target
+    public String toString()
+    {
+        return "Color: " + color + "\n";
     }
 }

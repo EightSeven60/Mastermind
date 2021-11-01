@@ -61,7 +61,7 @@ public class AppFrame extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         exitButton = new JButtonWithConfirmation("EXIT", new ExitAction());
-        saveButton = new JButtonWithConfirmation("SAVE", new SaveAction());
+        saveButton = new JButtonWithConfirmation("SAVE", new SaveAction(this));
         loadButton = new JButtonWithConfirmation("LOAD", new LoadAction());
         guessButton = new JButtonWithConfirmation("SUBMIT GUESS", new SubmitGuessAction());
 
@@ -124,7 +124,7 @@ public class AppFrame extends JFrame {
         targetCover = new JLabel(new ImageIcon("Resources//target cover.png"));
         targetCover.setLocation(targetGuessPanel.getX(), targetGuessPanel.getY());
         targetCover.setSize(targetGuessPanel.getWidth(), targetGuessPanel.getHeight());
-
+        targetCover.setVisible(false);
         guessMatrixPanel = new JPanel(new GridLayout(4, 10));
         guessMatrixPanel.setLocation(361, 366);
         guessMatrixPanel.setSize(1510, 617);
