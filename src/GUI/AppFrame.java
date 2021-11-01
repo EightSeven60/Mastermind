@@ -1,17 +1,24 @@
 package GUI;
 
-import Interfaces.CustomAction;
+import Classes.GameBoard;
 import utilitymethods.CodeGenerator;
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.GridLayout;
+import java.util.Arrays;
 import java.util.Objects;
-import java.util.Random;
 
 public class AppFrame extends JFrame {
+    GameBoard gameBoard;
+
     protected int screenWidth;
     protected int screenHeight;
 
@@ -41,12 +48,13 @@ public class AppFrame extends JFrame {
     protected JPanel targetGuessPanel;
     protected JPanel gamePanel;
 
-    public AppFrame() {
+    public AppFrame(GameBoard gameBoard) {
+        super();
+        this.gameBoard = gameBoard;
 
         graphicsDevice = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         screenWidth = graphicsDevice.getDisplayMode().getWidth();
         screenHeight = graphicsDevice.getDisplayMode().getHeight();
-
         currentRow = 0;
 
         this.setLayout(null);
@@ -164,5 +172,158 @@ public class AppFrame extends JFrame {
                 "\nthisHeight: " + this.getHeight());
         System.out.println("gamePanel height: " + gamePanel.getHeight() +
                 "\n gamePanel width: " + gamePanel.getWidth());
+    }
+
+    public int getScreenWidth() {
+        return screenWidth;
+    }
+    public int getScreenHeight() {
+        return screenHeight;
+    }
+    public int getCurrentRow() {
+        return currentRow;
+    }
+    public GraphicsDevice getGraphicsDevice() {
+        return graphicsDevice;
+    }
+    public JLabel getGamePanelBackground() {
+        return gamePanelBackground;
+    }
+    public JButtonWithConfirmation getExitButton() {
+        return exitButton;
+    }
+    public JButtonWithConfirmation getSaveButton() {
+        return saveButton;
+    }
+    public JButtonWithConfirmation getLoadButton() {
+        return loadButton;
+    }
+    public JButtonWithConfirmation getGuessButton() {
+        return guessButton;
+    }
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+    public JPanel getMenuPanel() {
+        return menuPanel;
+    }
+    public JLabelBall[][] getGuessBalls() {
+        return guessBalls;
+    }
+    public JPanel getGuessMatrixPanel() {
+        return guessMatrixPanel;
+    }
+    public JLabelHint[][][] getHints() {
+        return hints;
+    }
+    public JPanel[] getHintArea() {
+        return hintArea;
+    }
+    public JPanel getHintPanel() {
+        return hintPanel;
+    }
+    public JLabelBall[] getTargetBalls() {
+        return targetBalls;
+    }
+    public JLabel getTargetCover() {
+        return targetCover;
+    }
+    public JPanel getTargetGuessPanel() {
+        return targetGuessPanel;
+    }
+    public JPanel getGamePanel() {
+        return gamePanel;
+    }
+    public void setScreenWidth(int screenWidth) {
+        this.screenWidth = screenWidth;
+    }
+    public void setScreenHeight(int screenHeight) {
+        this.screenHeight = screenHeight;
+    }
+    public void setCurrentRow(int currentRow) {
+        this.currentRow = currentRow;
+    }
+    public void setGraphicsDevice(GraphicsDevice graphicsDevice) {
+        this.graphicsDevice = graphicsDevice;
+    }
+    public void setGamePanelBackground(JLabel gamePanelBackground) {
+        this.gamePanelBackground = gamePanelBackground;
+    }
+    public void setExitButton(JButtonWithConfirmation exitButton) {
+        this.exitButton = exitButton;
+    }
+    public void setSaveButton(JButtonWithConfirmation saveButton) {
+        this.saveButton = saveButton;
+    }
+    public void setLoadButton(JButtonWithConfirmation loadButton) {
+        this.loadButton = loadButton;
+    }
+    public void setGuessButton(JButtonWithConfirmation guessButton) {
+        this.guessButton = guessButton;
+    }
+    public void setMainPanel(JPanel mainPanel) {
+        this.mainPanel = mainPanel;
+    }
+    public void setMenuPanel(JPanel menuPanel) {
+        this.menuPanel = menuPanel;
+    }
+    public void setGuessBalls(JLabelBall[][] guessBalls) {
+        this.guessBalls = guessBalls;
+    }
+    public void setGuessMatrixPanel(JPanel guessMatrixPanel) {
+        this.guessMatrixPanel = guessMatrixPanel;
+    }
+    public void setHints(JLabelHint[][][] hints) {
+        this.hints = hints;
+    }
+    public void setHintArea(JPanel[] hintArea) {
+        this.hintArea = hintArea;
+    }
+    public void setHintPanel(JPanel hintPanel) {
+        this.hintPanel = hintPanel;
+    }
+    public void setTargetBalls(JLabelBall[] targetBalls) {
+        this.targetBalls = targetBalls;
+    }
+    public void setTargetCover(JLabel targetCover) {
+        this.targetCover = targetCover;
+    }
+    public void setTargetGuessPanel(JPanel targetGuessPanel) {
+        this.targetGuessPanel = targetGuessPanel;
+    }
+    public void setGamePanel(JPanel gamePanel) {
+        this.gamePanel = gamePanel;
+    }
+    @Override
+    public String toString() {
+        return "AppFrame{" +
+                "screenWidth=" + screenWidth +
+                ", screenHeight=" + screenHeight +
+                ", currentRow=" + currentRow +
+                ", graphicsDevice=" + graphicsDevice +
+                ", gamePanelBackground=" + gamePanelBackground +
+                ", exitButton=" + exitButton +
+                ", saveButton=" + saveButton +
+                ", loadButton=" + loadButton +
+                ", guessButton=" + guessButton +
+                ", mainPanel=" + mainPanel +
+                ", menuPanel=" + menuPanel +
+                ", guessBalls=" + Arrays.toString(guessBalls) +
+                ", guessMatrixPanel=" + guessMatrixPanel +
+                ", hints=" + Arrays.toString(hints) +
+                ", hintArea=" + Arrays.toString(hintArea) +
+                ", hintPanel=" + hintPanel +
+                ", targetBalls=" + Arrays.toString(targetBalls) +
+                ", targetCover=" + targetCover +
+                ", targetGuessPanel=" + targetGuessPanel +
+                ", gamePanel=" + gamePanel +
+                '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AppFrame)) return false;
+        AppFrame appFrame = (AppFrame) o;
+        return screenWidth == appFrame.screenWidth && screenHeight == appFrame.screenHeight && currentRow == appFrame.currentRow && Objects.equals(graphicsDevice, appFrame.graphicsDevice) && Objects.equals(gamePanelBackground, appFrame.gamePanelBackground) && Objects.equals(exitButton, appFrame.exitButton) && Objects.equals(saveButton, appFrame.saveButton) && Objects.equals(loadButton, appFrame.loadButton) && Objects.equals(guessButton, appFrame.guessButton) && Objects.equals(mainPanel, appFrame.mainPanel) && Objects.equals(menuPanel, appFrame.menuPanel) && Arrays.equals(guessBalls, appFrame.guessBalls) && Objects.equals(guessMatrixPanel, appFrame.guessMatrixPanel) && Arrays.equals(hints, appFrame.hints) && Arrays.equals(hintArea, appFrame.hintArea) && Objects.equals(hintPanel, appFrame.hintPanel) && Arrays.equals(targetBalls, appFrame.targetBalls) && Objects.equals(targetCover, appFrame.targetCover) && Objects.equals(targetGuessPanel, appFrame.targetGuessPanel) && Objects.equals(gamePanel, appFrame.gamePanel);
     }
 }
