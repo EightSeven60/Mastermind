@@ -1,5 +1,6 @@
 package GUI;
 
+import Classes.AllocationException;
 import Classes.GameBoard;
 import utilitymethods.CodeGenerator;
 
@@ -60,10 +61,15 @@ public class AppFrame extends JFrame {
         this.setLayout(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        exitButton = new JButtonWithConfirmation("EXIT", new ExitAction());
-        saveButton = new JButtonWithConfirmation("SAVE", new SaveAction());
-        loadButton = new JButtonWithConfirmation("LOAD", new LoadAction());
-        guessButton = new JButtonWithConfirmation("SUBMIT GUESS", new SubmitGuessAction());
+        try {
+            exitButton = new JButtonWithConfirmation("EXIT", new ExitAction());
+            saveButton = new JButtonWithConfirmation("SAVE", new SaveAction());
+            loadButton = new JButtonWithConfirmation("LOAD", new LoadAction());
+            guessButton = new JButtonWithConfirmation("SUBMIT GUESS", new SubmitGuessAction());
+        }
+        catch (AllocationException e) {
+            e.printStackTrace();
+        }
 
         menuPanel = new JPanel(new GridLayout());
         menuPanel.setOpaque(true);
