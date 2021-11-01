@@ -1,6 +1,7 @@
 package GUI;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import java.util.Random;
 
 public class JLabelHint extends JLabel {

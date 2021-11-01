@@ -1,8 +1,8 @@
 package GUI;
 
-import Interfaces.CustomAction;
+import Interfaces.ICustomAction;
 
-public class SubmitGuessAction implements CustomAction {
+public class SubmitGuessAction implements ICustomAction {
     @Override
     public void action() {
 

@@ -1,9 +1,8 @@
 package GUI;
 
+import Interfaces.ICustomAction;
 
-import Interfaces.CustomAction;
-
-public class LoadAction implements CustomAction {
+public class LoadAction implements ICustomAction {
     @Override
     public void action() {
         //LOAD CODE GOES HERE

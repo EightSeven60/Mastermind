@@ -1,11 +1,16 @@
 package GUI;
 
+import Classes.SaveThread;
+import Interfaces.ICustomAction;
 
-import Interfaces.CustomAction;
-
-public class SaveAction implements CustomAction {
+public class SaveAction implements ICustomAction {
     @Override
     public void action() {
-        //SAVE CODE GOES HERE
+        SaveThread saveThread = new SaveThread();
+        saveThread.start();
+
+
+
+
     }
 }

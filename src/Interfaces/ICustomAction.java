@@ -1,5 +1,5 @@
 package Interfaces;
 
-public interface CustomAction {
+public interface ICustomAction {
     public void action();
 }

@@ -1,9 +1,8 @@
 package GUI;
 
+import Interfaces.ICustomAction;
 
-import Interfaces.CustomAction;
-
-public class ExitAction implements CustomAction {
+public class ExitAction implements ICustomAction {
     @Override
     public void action() {
         System.exit(0);

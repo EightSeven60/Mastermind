@@ -1,22 +1,24 @@
 package GUI;
 
-import Interfaces.CustomAction;
+import Interfaces.ICustomAction;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class JButtonWithConfirmation extends JButton {
 
     protected String defaultText;
     protected Timer timer;
-    protected CustomAction customAction;
+    protected ICustomAction ICustomAction;
 
-    public JButtonWithConfirmation(String defaultText, CustomAction customAction) {
+    public JButtonWithConfirmation(String defaultText, ICustomAction ICustomAction) {
         super();
         timer = new Timer(2000, new ListenerWithConfirmation(this, timer));
         this.defaultText = defaultText;
-        this.customAction = customAction;
+        this.ICustomAction = ICustomAction;
         this.setText(defaultText);
         this.setFocusable(false);
         this.addActionListener(new ListenerWithConfirmation(this, timer));
@@ -33,7 +35,7 @@ public class JButtonWithConfirmation extends JButton {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == button) {
                 if (button.getText().contentEquals("Are you sure?")) {
-                    button.customAction.action();
+                    button.ICustomAction.action();
                     button.setText(button.defaultText);
                     button.timer.stop();
                 } else {
@@ -49,4 +51,37 @@ public class JButtonWithConfirmation extends JButton {
         }
     }
 
+    public String getDefaultText() {
+        return defaultText;
+    }
+    public Timer getTimer() {
+        return timer;
+    }
+    public Interfaces.ICustomAction getICustomAction() {
+        return ICustomAction;
+    }
+    public void setDefaultText(String defaultText) {
+        this.defaultText = defaultText;
+    }
+    public void setTimer(Timer timer) {
+        this.timer = timer;
+    }
+    public void setICustomAction(Interfaces.ICustomAction ICustomAction) {
+        this.ICustomAction = ICustomAction;
+    }
+    @Override
+    public String toString() {
+        return "JButtonWithConfirmation{" +
+                "defaultText='" + defaultText + '\'' +
+                ", timer=" + timer +
+                ", ICustomAction=" + ICustomAction +
+                '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        JButtonWithConfirmation that = (JButtonWithConfirmation) o;
+        return Objects.equals(defaultText, that.defaultText) && Objects.equals(timer, that.timer) && Objects.equals(ICustomAction, that.ICustomAction);
+    }
 }
