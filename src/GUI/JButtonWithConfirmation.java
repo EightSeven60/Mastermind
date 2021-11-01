@@ -1,5 +1,6 @@
 package GUI;
 
+import Classes.AllocationException;
 import Interfaces.ICustomAction;
 
 import javax.swing.JButton;
@@ -14,9 +15,10 @@ public class JButtonWithConfirmation extends JButton {
     protected Timer timer;
     protected ICustomAction ICustomAction;
 
-    public JButtonWithConfirmation(String defaultText, ICustomAction ICustomAction) {
+    public JButtonWithConfirmation(String defaultText, ICustomAction ICustomAction) throws AllocationException {
         super();
         timer = new Timer(2000, new ListenerWithConfirmation(this, timer));
+        if (timer == null) throw new AllocationException("Could not allocate space for custom button timer.");
         this.defaultText = defaultText;
         this.ICustomAction = ICustomAction;
         this.setText(defaultText);

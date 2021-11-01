@@ -1,5 +1,7 @@
 package GUI;
 
+import Classes.InvalidColorException;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.event.MouseEvent;
@@ -17,6 +19,9 @@ public class JLabelBall extends JLabel {
     public int color;
 
     public class ClickListener implements MouseListener {
+        public void throwException() throws InvalidColorException {
+            throw new InvalidColorException("Tried to set invalid color to ball.");
+        }
         @Override
         public void mouseClicked(MouseEvent e) {
         }
@@ -45,7 +50,12 @@ public class JLabelBall extends JLabel {
                         setIcon(new ImageIcon("Resources//Purple ball.png"));
                         break;
                     default:
-                        System.out.println("Failed to update color on click!");
+                        try {
+                            throwException();
+                        }
+                        catch (InvalidColorException exception) {
+                            exception.printStackTrace();
+                        }
                         break;
                 }
             }
