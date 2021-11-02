@@ -17,6 +17,7 @@ public class JLabelBall extends JLabel {
     public static final int COLOR_PURPLE = 5;
 
     public int color;
+    public boolean modifiable;
 
 
     public void throwException() throws InvalidColorException {
@@ -64,6 +65,8 @@ public class JLabelBall extends JLabel {
         }
         @Override
         public void mouseReleased(MouseEvent e) {
+            if (modifiable==false)
+                return;
             if (color < 5) {
                 ++color;
                 switch (color) {
@@ -111,6 +114,7 @@ public class JLabelBall extends JLabel {
     public JLabelBall(int colorClassConstant, boolean changeColorOnClick) {
         super();
         color = colorClassConstant;
+        modifiable=changeColorOnClick;
         switch (colorClassConstant) {
             case 0 -> this.setIcon(new ImageIcon("Resources//Red ball.png"));
             case 1 -> this.setIcon(new ImageIcon("Resources//Blue ball.png"));
@@ -120,9 +124,9 @@ public class JLabelBall extends JLabel {
             case 5 -> this.setIcon(new ImageIcon("Resources//Purple ball.png"));
             default -> System.out.println("Color passed in ball constructor was invalid.");
         }
-        if (changeColorOnClick) {
+
             this.addMouseListener(new ClickListener());
-        }
+
     }
     public JLabelBall(boolean changeColorOnClick) {
         super();
@@ -136,9 +140,9 @@ public class JLabelBall extends JLabel {
             case 5 -> this.setIcon(new ImageIcon("Resources//Purple ball.png"));
             default -> System.out.println("Color passed in ball constructor was invalid.");
         }
-        if (changeColorOnClick) {
+
             this.addMouseListener(new ClickListener());
-        }
+
     }
     @Override
     public String toString() {

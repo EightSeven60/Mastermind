@@ -8,7 +8,7 @@ public class CheckClass {
         else return false;
     }
     public boolean anyTriesLeft(int currentRow){ //call with the row of tries you are on
-        if(currentRow>11)
+        if(currentRow>8)
             return false;
         else return true;
     }
