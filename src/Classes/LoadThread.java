@@ -16,20 +16,24 @@ public class LoadThread extends Thread {
     }
 
     public void run() {
-        String garbage;
+        String garbage; //garbage is used to check that the unneeded strings have been read properly
         String buffer = "";
         int readColor;
         try {
             FileReader reader = new FileReader("save.txt");
             Scanner scanner = new Scanner(reader);
+
             garbage = scanner.next();
+            //read target balls
             for(int i=0;i<4;++i) {
                 garbage = scanner.next();
                 readColor = scanner.nextInt();
                 appframe.getTargetBalls()[i].color = readColor;
                 appframe.getTargetBalls()[i].setColor();
             }
+
             garbage = scanner.next();
+            //read hints
             for(int i=0;i<10;++i){
                 for(int j=0;j<2;++j) {
                     for(int k=0;k<2;++k) {
@@ -40,8 +44,10 @@ public class LoadThread extends Thread {
                     }
                 }
             }
+
             garbage = scanner.next();
             garbage = scanner.next();
+            //read guess balls
             for(int i=0;i<4;++i) {
                 for(int j=0;j<10;++j) {
                     garbage = scanner.next();
@@ -50,9 +56,13 @@ public class LoadThread extends Thread {
                     appframe.getGuessBalls()[i][j].setColor();
                 }
             }
+
             garbage = scanner.next();
             garbage = scanner.next();
+            //read current row
             appframe.setCurrentRow(scanner.nextInt());
+
+            //set balls and hints left of current row to visible and change modifiable field of all balls
             for (int i = 0; i < appframe.getCurrentRow() + 1; ++i) {
                 if (i != appframe.getCurrentRow()) {
                     for (int j = 0; j < 2; ++j) {
@@ -63,10 +73,30 @@ public class LoadThread extends Thread {
                 }
                 for (int j = 0; j < 4; ++j) {
                     appframe.getGuessBalls()[j][i].setVisible(true);
+                    if (i != appframe.getCurrentRow()) {
+                        appframe.getGuessBalls()[j][i].modifiable = false;
+                    }
+                    else {
+                        appframe.getGuessBalls()[j][i].modifiable = true;
+                    }
+                }
+            }
+
+            //set everything right of current row to be invisible
+            for (int i = appframe.getCurrentRow(); i < 10; ++i) {
+                for (int j = 0; j < 2; ++j) {
+                    for (int k = 0; k < 2; ++k) {
+                        appframe.getHints()[i][j][k].setVisible(false);
+                    }
+                }
+                if (i != appframe.getCurrentRow()) {
+                    for (int j = 0; j < 4; ++j) {
+                        appframe.getGuessBalls()[j][i].setVisible(false);
+                    }
                 }
             }
         } catch (IOException e) {
-                e.printStackTrace();
+            e.printStackTrace();
         }
     }
 }

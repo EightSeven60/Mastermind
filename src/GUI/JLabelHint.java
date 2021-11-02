@@ -51,6 +51,7 @@ public class JLabelHint extends JLabel {
         this.setVisible(false);
     }
     public JLabelHint() {
+        this.color = COLOR_NULL;
         this.setIcon(new ImageIcon("Resources//Null hint.png"));
         this.setVisible(false);
     }
