@@ -1,13 +1,17 @@
 package GUI;
 
-import Classes.SaveThread;
-import Interfaces.ICustomAction;
 import GUI.AppFrame;
+import GUI.SubmitGuessActionThread;
+import Interfaces.ICustomAction;
 
-public class SubmitGuessAction implements ICustomAction {
+public class SubmitGuessAction  implements ICustomAction  {
+    protected AppFrame appframe;
+    public SubmitGuessAction(AppFrame appframe) {
+        this.appframe=appframe;
+    }
     @Override
     public void action() {
-        AppFrame appframe;
+
         SubmitGuessActionThread submitGuessActionThread = new SubmitGuessActionThread(appframe);
         submitGuessActionThread.start();
 
