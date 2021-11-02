@@ -166,7 +166,7 @@ public class AppFrame extends JFrame {
 
         this.setContentPane(mainPanel);
         this.setVisible(true);
-        //graphicsDevice.setFullScreenWindow(this);
+        graphicsDevice.setFullScreenWindow(this);
 
         System.out.println("mainPanelWidth: " + mainPanel.getWidth() +
                 "\nmainPanelHeight: " + mainPanel.getHeight());
