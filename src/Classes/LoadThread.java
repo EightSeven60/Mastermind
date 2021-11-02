@@ -81,6 +81,11 @@ public class LoadThread extends Thread {
                     }
                 }
             }
+            for (int i = appframe.getCurrentRow(); i < 10; ++i) {
+                for (int j = 0; j < 4; ++j) {
+                    appframe.getGuessBalls()[j][i].modifiable = true;
+                }
+            }
 
             //set everything right of current row to be invisible
             for (int i = appframe.getCurrentRow(); i < 10; ++i) {
