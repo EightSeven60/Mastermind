@@ -29,16 +29,11 @@ public class JLabelHint extends JLabel {
     public JLabelHint() {
         super();
         Random random = new Random();
-        switch(color=random.nextInt(2) + 6) {
+        switch(color = random.nextInt(2) + 6) {
             case 6 -> this.setIcon(new ImageIcon("Resources//Black hint.png"));
             case 7 -> this.setIcon(new ImageIcon("Resources//White hint.png"));
             default -> System.out.println("Color passed in ball constructor was invalid.");
         }
         this.setVisible(false);
-    }
-    //Hint-uri
-    public String toString()
-    {
-        return "Color: " + color + "\n";
     }
 }
