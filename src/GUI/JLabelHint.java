@@ -25,6 +25,9 @@ public class JLabelHint extends JLabel {
             case 7:
                 setIcon(new ImageIcon("Resources//White hint.png"));
                 break;
+            case 8:
+                setIcon(new ImageIcon("Resources//Null hint.png"));
+                break;
             default:
                 try {
                     throwException();
@@ -42,6 +45,7 @@ public class JLabelHint extends JLabel {
         switch (colorClassConstant) {
             case 6 -> this.setIcon(new ImageIcon("Resources//Black hint.png"));
             case 7 -> this.setIcon(new ImageIcon("Resources//White hint.png"));
+            case 8 -> this.setIcon(new ImageIcon("Resources//Null hint.png"));
             default -> System.out.println("Color passed in ball constructor was invalid.");
         }
         this.setVisible(false);

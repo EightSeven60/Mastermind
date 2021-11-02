@@ -1,6 +1,6 @@
 package Interfaces;
 
 public interface ICustomAction {
-    public void action();
-
+    void action();
+    //veniti la un lol?
 }
