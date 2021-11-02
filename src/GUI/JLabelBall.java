@@ -18,10 +18,43 @@ public class JLabelBall extends JLabel {
 
     public int color;
 
-    public class ClickListener implements MouseListener {
-        public void throwException() throws InvalidColorException {
-            throw new InvalidColorException("Tried to set invalid color to ball.");
+
+    public void throwException() throws InvalidColorException {
+        throw new InvalidColorException("Tried to set invalid color to ball.");
+    }
+
+    public void setColor() {
+        switch (color) {
+            case 0:
+                setIcon(new ImageIcon("Resources//Red ball.png"));
+                break;
+            case 1:
+                setIcon(new ImageIcon("Resources//Blue ball.png"));
+                break;
+            case 2:
+                setIcon(new ImageIcon("Resources//Green ball.png"));
+                break;
+            case 3:
+                setIcon(new ImageIcon("Resources//Yellow ball.png"));
+                break;
+            case 4:
+                setIcon(new ImageIcon("Resources//Turquoise ball.png"));
+                break;
+            case 5:
+                setIcon(new ImageIcon("Resources//Purple ball.png"));
+                break;
+            default:
+                try {
+                    throwException();
+                }
+                catch (InvalidColorException exception) {
+                    exception.printStackTrace();
+                }
+                break;
         }
+    }
+
+    public class ClickListener implements MouseListener {
         @Override
         public void mouseClicked(MouseEvent e) {
         }
@@ -106,5 +139,9 @@ public class JLabelBall extends JLabel {
         if (changeColorOnClick) {
             this.addMouseListener(new ClickListener());
         }
+    }
+    @Override
+    public String toString() {
+        return "Color: " + color + "\n";
     }
 }
