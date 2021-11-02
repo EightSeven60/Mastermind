@@ -73,6 +73,7 @@ public class SubmitGuessActionThread extends Thread {
             }
             else
                     appframe.getGuessButton().setText("YOU ARE OUT OF TRIES");
+                    appframe.targetCover.setVisible(false);
 
         }
 
