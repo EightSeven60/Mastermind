@@ -1,6 +1,8 @@
 package utilitymethods;
 
-public class CheckClass {
+import Interfaces.ICheckClass;
+
+public class CheckClass implements ICheckClass {
 
     public boolean isGameWon(int pos){ //inside function call use CounterClass.positionCounter (4 correct positions = won game)
         if(pos==4)
