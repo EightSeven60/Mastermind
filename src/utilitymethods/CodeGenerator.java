@@ -1,7 +1,9 @@
 package utilitymethods;
 
+import Interfaces.ICodeGenerator;
+
 import java.util.*;
-public class CodeGenerator {
+public class CodeGenerator implements ICodeGenerator {
 
 
     //_wCodex stands for the colour of position X
