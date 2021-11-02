@@ -13,7 +13,7 @@ public class SaveThread extends Thread{
     }
     public void run() {
         try {
-            FileWriter writer = new FileWriter("save2.txt");
+            FileWriter writer = new FileWriter("save.txt");
             writer.append("--Targets--\n");
             for(int i=0;i<4;++i) {
                 writer.write(appframe.getTargetBalls()[i].toString());
@@ -37,6 +37,8 @@ public class SaveThread extends Thread{
                     writer.append(appframe.getGuessBalls()[i][j].toString());
                 }
             }
+            writer.append("--Current row--\n");
+            writer.append(String.valueOf(appframe.getCurrentRow()));
             writer.close();
         }
         catch (Exception e)

@@ -1,5 +1,7 @@
 package GUI;
 
+import Classes.InvalidColorException;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.util.Random;
@@ -15,6 +17,29 @@ public class JLabelHint extends JLabel {
     public static final int COLOR_WHITE = 7;
 
     public int color;
+
+    public void throwException() throws InvalidColorException {
+        throw new InvalidColorException("Tried to set invalid color to ball.");
+    }
+
+    public void setColor() {
+        switch (color) {
+            case 6:
+                setIcon(new ImageIcon("Resources//Black hint.png"));
+                break;
+            case 7:
+                setIcon(new ImageIcon("Resources//White hint.png"));
+                break;
+            default:
+                try {
+                    throwException();
+                }
+                catch (InvalidColorException exception) {
+                    exception.printStackTrace();
+                }
+                break;
+        }
+    }
 
     public JLabelHint(int colorClassConstant) {
         super();
@@ -35,5 +60,9 @@ public class JLabelHint extends JLabel {
             default -> System.out.println("Color passed in ball constructor was invalid.");
         }
         this.setVisible(false);
+    }
+    @Override
+    public String toString() {
+        return "Color: " + color + "\n";
     }
 }

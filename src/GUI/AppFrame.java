@@ -63,8 +63,8 @@ public class AppFrame extends JFrame {
 
         try {
             exitButton = new JButtonWithConfirmation("EXIT", new ExitAction());
-            saveButton = new JButtonWithConfirmation("SAVE", new SaveAction());
-            loadButton = new JButtonWithConfirmation("LOAD", new LoadAction());
+            saveButton = new JButtonWithConfirmation("SAVE", new SaveAction(this));
+            loadButton = new JButtonWithConfirmation("LOAD", new LoadAction(this));
             guessButton = new JButtonWithConfirmation("SUBMIT GUESS", new SubmitGuessAction());
         }
         catch (AllocationException e) {
@@ -166,7 +166,7 @@ public class AppFrame extends JFrame {
 
         this.setContentPane(mainPanel);
         this.setVisible(true);
-        graphicsDevice.setFullScreenWindow(this);
+        //graphicsDevice.setFullScreenWindow(this);
 
         System.out.println("mainPanelWidth: " + mainPanel.getWidth() +
                 "\nmainPanelHeight: " + mainPanel.getHeight());

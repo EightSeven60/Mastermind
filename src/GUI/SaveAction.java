@@ -5,18 +5,15 @@ import Interfaces.ICustomAction;
 
 public class SaveAction implements ICustomAction {
 
-    AppFrame appFrame;
+    protected AppFrame appframe;
 
-    public SaveAction(AppFrame appFrame) {
-        this.appFrame = appFrame;
+    public SaveAction(AppFrame appframe) {
+        this.appframe = appframe;
     }
+
     @Override
     public void action() {
-        SaveThread saveThread = new SaveThread(appFrame);
+        SaveThread saveThread = new SaveThread (appframe);
         saveThread.start();
-
-
-
-
     }
 }
