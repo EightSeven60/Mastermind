@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.util.Objects;
 
 public class JButtonWithConfirmation extends JButton {
@@ -14,6 +15,7 @@ public class JButtonWithConfirmation extends JButton {
     protected String defaultText;
     protected Timer timer;
     protected ICustomAction ICustomAction;
+
 
     public JButtonWithConfirmation(String defaultText, ICustomAction ICustomAction) throws AllocationException {
         super();
@@ -24,7 +26,10 @@ public class JButtonWithConfirmation extends JButton {
         this.setText(defaultText);
         this.setFocusable(false);
         this.addActionListener(new ListenerWithConfirmation(this, timer));
+
     }
+
+
 
     protected static class ListenerWithConfirmation implements ActionListener {
         protected JButtonWithConfirmation button;
