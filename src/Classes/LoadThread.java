@@ -61,6 +61,7 @@ public class LoadThread extends Thread {
             garbage = scanner.next();
             //read current row
             appframe.setCurrentRow(scanner.nextInt());
+            appframe.getTargetCover().setVisible(true);
 
             //set balls and hints left of current row to visible and change modifiable field of all balls
             for (int i = 0; i < appframe.getCurrentRow() + 1; ++i) {
