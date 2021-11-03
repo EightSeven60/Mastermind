@@ -29,7 +29,7 @@ public class SaveThread extends Thread{
                     }
                 }
             }
-            writer.append("--Guest balls--\n");
+            writer.append("--Guess balls--\n");
             for(int i=0;i<4;++i)
             {
                 for(int j=0;j<10;++j)
