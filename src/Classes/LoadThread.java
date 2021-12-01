@@ -101,6 +101,9 @@ public class LoadThread extends Thread {
                     }
                 }
             }
+
+            appframe.getGuessButton().setText("SUBMIT GUESS");
+            appframe.getSaveButton().setEnabled(true);
         } catch (IOException e) {
             e.printStackTrace();
         }

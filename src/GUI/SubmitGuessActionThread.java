@@ -71,12 +71,15 @@ public class SubmitGuessActionThread extends Thread {
                      appframe.guessBalls[i][appframe.getCurrentRow()].setVisible(true);
 
             }
-            else
-            {  appframe.getGuessButton().setText("YOU ARE OUT OF TRIES");
-                    appframe.targetCover.setVisible(false);
+            else {
+                appframe.getGuessButton().setText("YOU ARE OUT OF TRIES");
+                appframe.targetCover.setVisible(false);
+                appframe.setCurrentRow(appframe.getCurrentRow() + 1);
             }
         }
-
-
+        if (appframe.getCurrentRow() > 9) {
+            appframe.getSaveButton().setEnabled(false);
+        }
+        else appframe.getSaveButton().setEnabled(true);
     }
 }

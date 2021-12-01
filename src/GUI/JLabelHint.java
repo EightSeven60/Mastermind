@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import java.util.Random;
 
 public class JLabelHint extends JLabel {
-    public static final int COLOR_BLACK = 6;
+    public static final int COLOR_RED = 6;
     public static final int COLOR_WHITE = 7;
     public static final int COLOR_NULL = 8;
 
@@ -20,7 +20,7 @@ public class JLabelHint extends JLabel {
     public void setColor() {
         switch (color) {
             case 6:
-                setIcon(new ImageIcon("Resources//Black hint.png"));
+                setIcon(new ImageIcon("Resources//Red hint.png"));
                 break;
             case 7:
                 setIcon(new ImageIcon("Resources//White hint.png"));
@@ -43,7 +43,7 @@ public class JLabelHint extends JLabel {
         super();
         color = colorClassConstant;
         switch (colorClassConstant) {
-            case 6 -> this.setIcon(new ImageIcon("Resources//Black hint.png"));
+            case 6 -> this.setIcon(new ImageIcon("Resources//Red hint.png"));
             case 7 -> this.setIcon(new ImageIcon("Resources//White hint.png"));
             case 8 -> this.setIcon(new ImageIcon("Resources//Null hint.png"));
             default -> System.out.println("Color passed in ball constructor was invalid.");
