@@ -1,28 +1,28 @@
 --Targets--
-Color: 0
-Color: 1
-Color: 3
 Color: 4
+Color: 0
+Color: 2
+Color: 3
 --Hints--
 Color: 6
 Color: 8
 Color: 8
 Color: 8
 Color: 6
-Color: 6
+Color: 8
 Color: 8
 Color: 8
 Color: 6
 Color: 7
 Color: 8
 Color: 8
+Color: 6
+Color: 7
 Color: 8
 Color: 8
-Color: 8
-Color: 8
-Color: 8
-Color: 8
-Color: 8
+Color: 6
+Color: 7
+Color: 7
 Color: 8
 Color: 8
 Color: 8
@@ -48,7 +48,7 @@ Color: 8
 Color: 3
 Color: 1
 Color: 2
-Color: 0
+Color: 2
 Color: 0
 Color: 0
 Color: 0
@@ -57,9 +57,9 @@ Color: 0
 Color: 0
 Color: 3
 Color: 1
+Color: 2
 Color: 1
-Color: 1
-Color: 1
+Color: 2
 Color: 1
 Color: 1
 Color: 1
@@ -67,9 +67,9 @@ Color: 1
 Color: 1
 Color: 3
 Color: 3
-Color: 2
-Color: 2
-Color: 2
+Color: 3
+Color: 3
+Color: 3
 Color: 2
 Color: 2
 Color: 2
@@ -86,4 +86,4 @@ Color: 3
 Color: 3
 Color: 3
 --Current row--
-3
+5

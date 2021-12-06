@@ -1,7 +1,6 @@
 package GUI;
 
-import Classes.AllocationException;
-import Classes.GameBoard;
+import Classes.*;
 import utilitymethods.CodeGenerator;
 
 import javax.swing.ImageIcon;
@@ -18,8 +17,6 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class AppFrame extends JFrame {
-    GameBoard gameBoard;
-
     protected int screenWidth;
     protected int screenHeight;
 
@@ -49,9 +46,8 @@ public class AppFrame extends JFrame {
     protected JPanel targetGuessPanel;
     protected JPanel gamePanel;
 
-    public AppFrame(GameBoard gameBoard) {
+    public AppFrame() {
         super();
-        this.gameBoard = gameBoard;
 
         graphicsDevice = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         screenWidth = graphicsDevice.getDisplayMode().getWidth();

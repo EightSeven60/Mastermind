@@ -1,4 +1,4 @@
-package GUI;
+package Classes;
 
 import GUI.AppFrame;
 import GUI.SubmitGuessActionThread;

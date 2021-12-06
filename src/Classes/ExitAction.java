@@ -1,4 +1,4 @@
-package GUI;
+package Classes;
 
 import Interfaces.ICustomAction;
 
