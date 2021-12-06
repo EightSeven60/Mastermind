@@ -17,8 +17,6 @@
 	We used a 10 by 4 game board with 6 possible colors, meaning 2 colors will always be missing from the code.
 	We also allow the player to pick identical colors in their guess.
 	A save-load feature is also in the game in case the player needs to quit and come back.
-
-	
  
 	Installation
 	
