@@ -1,6 +1,7 @@
-package GUI;
+package Classes;
 
 import Classes.SaveThread;
+import GUI.AppFrame;
 import Interfaces.ICustomAction;
 
 public class SaveAction implements ICustomAction {

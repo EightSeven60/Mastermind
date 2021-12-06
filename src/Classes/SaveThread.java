@@ -2,7 +2,6 @@ package Classes;
 
 import GUI.AppFrame;
 
-import java.io.File;
 import java.io.FileWriter;
 
 public class SaveThread extends Thread{
@@ -44,7 +43,7 @@ public class SaveThread extends Thread{
         catch (Exception e)
         {
             System.out.println(e);
-            System.out.println("Succes!");
+            System.out.println("Success!");
         }
 
     }

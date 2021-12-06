@@ -27,8 +27,10 @@ public class SubmitGuessActionThread extends Thread {
              if (pos == 4) {
                  appframe.targetCover.setVisible(false);
                  appframe.guessButton.setText("YOU WON");
+                 appframe.saveButton.setEnabled(false);
                  appframe.setCurrentRow(10);
-                appframe.guessButton.removeActionListener(appframe.guessButton.getActionListeners()[0]);
+                 //appframe.guessButton.removeActionListener(appframe.guessButton.getActionListeners()[0]);
+                 appframe.guessButton.setEnabled(false);
                  for(int i=0;i<4;i++)
                      appframe.guessBalls[i][appframe.currentRow-1].modifiable=false;
 
@@ -73,6 +75,7 @@ public class SubmitGuessActionThread extends Thread {
             }
             else {
                 appframe.getGuessButton().setText("YOU ARE OUT OF TRIES");
+                 appframe.getGuessButton().setEnabled(false);
                 appframe.targetCover.setVisible(false);
                 appframe.setCurrentRow(appframe.getCurrentRow() + 1);
             }

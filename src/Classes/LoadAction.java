@@ -1,7 +1,8 @@
-package GUI;
+package Classes;
 
 import Classes.LoadThread;
 import Classes.SaveThread;
+import GUI.AppFrame;
 import Interfaces.ICustomAction;
 
 public class LoadAction implements ICustomAction {
