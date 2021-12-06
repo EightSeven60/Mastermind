@@ -1,9 +1,9 @@
-    Overview
+	Overview
 
 	Mastermind was inspired by the old pencil and paper game called Bulls and Cows, and was put into board form by Mordecai Meirowitz in 1970.
 	The goal of the game is to guess the code created by the mastermind, and it comes in various configurations when it comes to the number of available colors and slots.
 
-    Gameplay
+	Gameplay
 
 	The game starts off with the mastermind choosing their combination and hiding it, after which, the code breaker must guess a combination.
 	Then, the mastermind must respond to the guess with appropriate hints, in the form of coloured balls, that tell the code breaker how many colours they guessed in the right spots, and how many they guessed in the wrong spots.
@@ -18,6 +18,8 @@
 	We also allow the player to pick identical colors in their guess.
 	A save-load feature is also in the game in case the player needs to quit and come back.
 
+	
+ 
 	Installation
 	
 	-Download and install JDK 16.0.2 https://www.oracle.com/java/technologies/downloads/#jdk17-windows
