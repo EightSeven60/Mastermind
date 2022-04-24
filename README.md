@@ -35,3 +35,5 @@ A save-load feature is also in the game in case the player needs to quit and com
 -Currently the game can only run in fullscreen because of windows display scaling issues.
 
 -The code can be deduced from the save file.
+
+# The game is playable in this current state, though it's not very polished. Consider it in beta. May update in the future if I'm requested to or I feel like working on it.
